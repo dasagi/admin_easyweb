@@ -1,0 +1,39 @@
+                                    <div class="widget_form">
+                                            
+                                        <form class="form-horizontal" action="<?php print $this->escape($this->element->getAction()); ?>" method="<?php print $this->escape($this->element->getMethod()); ?>">
+                                                    <div class="control-group">
+                                                            <?php print $this->element->nombre; ?>
+                                                            <?php print $this->element->id; ?>
+                                                            <?php print $this->element->data;?>
+                                                            <?php print $this->element->cat;?>
+                                                            <?php print $this->element->update; ?>
+                                                            <?php print $this->element->avatar; ?>
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <?php print $this->element->apellido; ?>
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <?php print $this->element->email; ?>
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <?php print $this->element->password; ?>
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <?php print $this->element->repeat; ?>
+                                                    </div>                                               
+                                        </div>
+                                        <div class="article_footer">
+                                            <ul>
+                                            	<li class="span3 offset6">
+                                                    <button class=" btn-block btn_public" type="submit">
+                                                        <i class="icon-btn-public"></i> <?php print $this->element->usuario->getLabel(); ?>
+                                                    </button>
+                                                </li>
+                                                <li class="span3"><button class=" btn-block btn_cancel" type="reset">
+                                                        <i class="icon-btn-delete"></i> <?php print $this->element->cancelar->getLabel(); ?></button>
+                                                </li>
+                                            </ul>
+                                        </div>   
+                                        <div class="clearfix"></div>      
+                                        </form>
+                                    </div>

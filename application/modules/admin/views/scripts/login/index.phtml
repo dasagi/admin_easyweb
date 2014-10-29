@@ -1,0 +1,30 @@
+<?php if(!$this->loggedIn): ?>
+
+    <p><?php echo $this->titulo?> </p>
+    
+    <?php if(isset($this->responseLogin)):?>
+        
+        <div class="form">
+            <div class="alert alert_lila"><?php echo $this->responseLogin;?>
+                                    <button type="button" class="close" data-dismiss="alert"><i class="icon-close-alert"></i></button>
+            </div>  
+        </div>
+     
+    <?php endif;?>
+
+  <div class="row-fluid">
+      <div class="form">
+        <?php echo $this->form;?>
+      </div>
+  </div>
+  <p><a href="<?php echo $this->baseUrl?>/admin/login/forget">¿Olvidaste tu contraseña?</a></p>
+<?php else:?>
+        
+        <ul>
+            <li><a href="<?php echo $this->baseUrl?>/" class="tipoverda">Volver a inicio login</a></li>
+            <li><a href="<?php echo $this->baseUrl?>/admin/usuario/index" class="tipoverda">Crear nuevos usuarios</a></li>
+            <li><a href="<?php echo $this->baseUrl?>/usuarios/index/listado" class="tipoverda">Ver listado</a></li>
+            <li><a href="<?php echo $this->baseUrl?>/admin/login/logout" class="tipoverda">Cerrar sesión [x]</a></li>
+        </ul>
+
+<?php endif;?>

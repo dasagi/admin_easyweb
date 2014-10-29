@@ -1,0 +1,15 @@
+function cargarSelectMenus()
+{
+    var data = "menuId="+$('#seccio').val();
+
+    $.ajax({
+      type: "POST",
+      url: "<?php echo $this->baseUrl('/admin/entrada/cargar/format/html')?>",
+      data: data,
+      success: function(html){
+        $("#cargar_menuSubSeccion").html(html);
+        
+        //alert(data);
+      }
+    });
+}

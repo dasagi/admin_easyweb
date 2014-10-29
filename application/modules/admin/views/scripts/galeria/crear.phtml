@@ -1,0 +1,52 @@
+                        <div class="separador"></div>
+                        <article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-img"></icon>
+                                </div>
+                                <div class="span11">
+                                    <div class="article">  
+                                        
+                                        <div style="padding:18px;">
+                                            <div class="alert alert-info margin0"><?php if($this->galDades!=null){echo 'Título de la galería: <b>'.stripslashes($this->galDades->getTitol()).'</b>';}else{echo "<b> Esta galería no está creada</b>";} ?></div>
+                                            <p></p>
+                                                <form action="<?php echo $this->baseUrl ?>/admin/galeria/crear/id/<?php echo $this->galId?>" class="dropzone" id="myDrop"></form>
+                                                <?php if (count($this->listImagenes) > 0):?>
+                                                <?php endif;?>
+                                        </div>                                       
+                                        <div class="article_cos">
+                                            <div id="lista_img">
+                                                <ul class="thumbnails">  
+                                                	<!-- Start:foreach-->    
+                                                <?php if(count($this->listImagenes) > 0): ?>    
+                                                    <?php 
+                                                        $i = 0;
+                                                            foreach($this->listImagenes as $imagen):
+                                                            $i++;
+                                                     ?>                                                        
+                                                    <li class="span3"> 
+                                                    	<a href="<?php echo $this->baseUrl ?>/files/img/<?php echo $imagen->getRuta();?>" class="imgs" rel="tip" title="Título: <?php echo ($imagen->getTitol()==null) ? "Sin titulo":$imagen->getTitol();?> Fecha: <?php echo $imagen->getData()->format('d.m.Y');?>"><img src="<?php echo $this->baseUrl ?>/timthumb.php?src=files/img/<?php echo $imagen->getRuta();?>&a=t&w=475&h=329" alt="Título: <?php echo ($imagen->getTitol()==null) ? "Sin titulo":$imagen->getTitol();?> Fecha: <?php echo $imagen->getData()->format('d.m.Y');?>"></a>
+                                                        <p><?php echo $this->neteja->limitaNomImg($imagen->getRuta());?></p>  
+                                                        <div class="widget_img_footer">
+                                                                <a id="form_menu" href="<?php echo $this->url(array('module'=>'admin','controller'=>'galeria','action'=>'indeximg')).'/img/'.$imagen->getId();?>" class="fancybox fancybox.iframe"><i class="icon-btn-edit-gris-lt" id="edita<?php echo $i?>" rel="tooltip" title="Editar"></i></a>
+                                                        	<a href="<?php echo $this->baseUrl ?>/admin/galeria/eliminarimagen/id/<?php echo $imagen->getId() ?>/gal/<?php echo $this->galId;?>" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("¿Estás seguro que quiere borrar esta imagen?")'> <i class="icon-btn-close-lt"></i></a>
+                                                        </div>                                                          
+                                                        <div class="clearfix"></div>                                         
+                                                    </li>
+                                                    <?php endforeach;?>
+                                                    <!--End: foreach-->
+                                                    <?php else:?>
+                                                    <p>Todavía no tienes  <strong>imágenes</strong> en esta galería</p>
+                                                <?php endif;?>    
+                                                </ul>
+                                            </div>
+                                            <div class="botonera_upload">
+                                            </div>
+                                        </div>
+                                        <div class="article_footer">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>

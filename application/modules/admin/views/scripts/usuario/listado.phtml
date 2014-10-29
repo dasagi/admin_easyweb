@@ -1,0 +1,46 @@
+                        <div class="separador"></div>
+                    	<article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-users-list"></icon>
+                                </div>
+                                <div class="span11">
+                                	<div class="article">
+                                    	<div class="article_cos">
+                                            <?php if($this->listaUsuario->count() > 0): ?>
+                                                <?php 
+                                                $i = 0;    
+                                                    foreach($this->listaUsuario as $usuario): 
+                                                    $i++
+                                                ?>
+                                                <div class="widget_list_users">
+                                                    <div class="widget_list_users_header"><?php echo $this->formatDate($usuario->getData(), "dd.MM.yyyy"); ?></div>
+                                                    <div class="widget_list_users_cos">
+                                                            <div class="span10">
+                                                            <h2><?php echo $usuario->getMail() ?></h2> <span> <?php echo $usuario->getNom() ?> <?php echo $usuario->getCognoms() ?></span>
+                                                             
+                                                        </div>
+                                                        <div class="span2 text_align_r">
+                                                            <ul>
+                                                                <li><a href="<?php echo $this->baseUrl ?>/admin/usuario/editar/id/<?php echo $usuario->getId() ?>" id="editar<?php echo $i?>" rel="tooltip" title="Editar"><i class="icon-btn-edit-gris-fort"></i></a></li>
+                                                                <li><a href="<?php echo $this->baseUrl ?>/admin/usuario/eliminar/id/<?php echo $usuario->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>" id="borrar<?php echo $i?>" rel="tooltip" title="Eliminar usuario" onClick='return confirm("¿Estás seguro que quiere borrar este usuario?")'><i class="icon-btn-close-gris-fort"></i></a></li>                                                    	
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <?php endforeach;?>
+                                            <?php else:?>
+                                                <p>Lo sentimos, no hay  <strong>usuarios</strong> en el sistema</p>
+                                            <?php endif;?> 
+                                        </div>
+                                        <div class="article_footer">
+                                            <div class="pagination pagination-right">
+                                                <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>                                        
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </article>

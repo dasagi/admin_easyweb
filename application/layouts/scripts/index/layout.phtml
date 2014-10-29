@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <?php echo $this->doctype()?>
+        <?php echo $this->headTitle()?>
+    <?php echo $this->headLink()->appendStylesheet($this->baseUrl().'/css/styles.css');?>
+        <?php echo $this->headMeta()?>
+    </head>
+    <body>
+        <div id='cos'>
+          <?php echo $this->render("header.phtml");//cargamos el header ?>
+             <!-- sale error del login-->
+             <?php if($this->layout()->mensaje !== null): ?>
+                <div id="mensaje" style="color:<?php echo $this->layout()->colorMensaje? $this->layout()->colorMensaje: "red"; ?>;font-weight:bold; margin:10px 0 10px 0;">
+                  <?php echo $this->layout()->mensaje; ?>
+                </div>
+              <?php endif; ?>
+          <?php echo $this->layout()->content;//cargamos el contenido ?>
+          <?php echo $this->render("footer.phtml");//cargamos el footer ?>
+        </div>
+    </body>
+</html>

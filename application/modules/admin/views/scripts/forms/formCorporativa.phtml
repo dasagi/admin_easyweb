@@ -1,0 +1,74 @@
+                                     <div class="widget_form">       
+                                            <form class="form-horizontal" name="corporativa" action="<?php print $this->escape($this->element->getAction()); ?>" method="<?php print $this->escape($this->element->getMethod()); ?>">
+                                                    <?php print $this->element->update; ?>
+                                                    <?php print $this->element->id; ?>
+                                                    <div class="control-group">
+                                                            <div class="span12"><?php print $this->element->empresa;?></div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <div class="span12">                                                               
+                                                                <?php print $this->element->adreca;?>
+                                                            </div>       
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <div class="span8">
+                                                            <?php print $this->element->poblacio;?>
+                                                        </div>
+                                                         <div class="span4">
+                                                                <?php print $this->element->cp;?>
+                                                         </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <div class="span4">
+                                                            <?php print $this->element->telefon;?>
+                                                        </div>
+                                                        <div class="span4">
+                                                             <?php print $this->element->fax;?>
+                                                        </div>
+                                                        <div class="span4">
+                                                            <?php print $this->element->movil;?>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <div class="span6">
+                                                            <?php print $this->element->email;?>
+                                                        </div>
+                                                        <div class="span6">
+                                                            <?php print $this->element->web;?>
+                                                        </div>    
+                                                    </div>
+                                                     <div class="control-group">                                                          
+                                                           <?php print $this->element->gmaps;?>
+                                                    </div>                                     
+                                                    <div class="control-group">
+                                                            <div id="legal" class="metadatos">
+                                                            Texto Legal   
+                                                                <!--<a href="#" id="meta" onClick="mostraOculta('content_metas'); return false;">asdfasd</a>   -->                      
+                                                                <button type="button" class="close" onClick=" mostrarOcultarLegal('content_metas'); return false;">
+                                                                    <i class="icon-btn-arrow-toggle"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div id="content_metas" class="content_metas">
+                                                                 <div class="control-group">
+                                                                    <?php print $this->element->legal;?>
+                                                                 </div>
+                                                            </div>
+                                                    </div>
+                                        </div>
+                                        <div class="article_footer">
+                                            <ul>
+                                            	<li class="span3 offset6">
+                                                    <button class=" btn-block btn_public" type="submit" name="aceptar" value="0">
+                                                        <i class="icon-btn-public"></i> <?php print $this->element->aceptar->getLabel(); ?>    
+                                                    </button>
+                                                </li>
+                                                <li class="span3">
+                                                    <button class=" btn-block btn_cancel" type="reset" name="cancelar">
+                                                        <i class="icon-btn-delete"></i> <?php print $this->element->cancelar->getLabel(); ?>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>   
+                                        <div class="clearfix"></div>      
+                                        </form>    

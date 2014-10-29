@@ -1,0 +1,73 @@
+                                            <div class="widget_form">
+                                                <form class="form-horizontal" name="entrada" action="<?php print $this->escape($this->element->getAction()); ?>" method="<?php print $this->escape($this->element->getMethod()); ?>">
+                                                          <?php print $this->element->update; ?>
+                                                          <?php print $this->element->idMetas;?>
+                                                          <?php print $this->element->id; ?>
+                                                    <div class="control-group">
+                                                            <div class="span5"><?php print $this->element->data;?></div>
+                                                            <div class="span5 offset2">
+                                                                <?php print $this->element->idioma;?>                                                                       
+                                                            </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                    	 <label class="checkbox">                                 
+                                                                <?php print $this->element->banner;?> <span>Es un Banner</span>
+                                                            
+                                                         </label>                                     
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <?php print $this->element->titol;?>
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <?php print $this->element->contingut;?>
+                                                            <!--<textarea id="textarea" class="span12" rows="3" placeholder="Contenido" style="width: 100%;"></textarea>-->
+                                                    </div>
+                                                    <div class="control-group">
+                                                            <div id="meta" class="metadatos">
+                                                            Contenido de metadatos   
+                                                            	<!--<a href="#" id="meta" onClick="mostraOculta('content_metas'); return false;">asdfasd</a>   -->                   	
+                                                            	<button type="button" class="close" onClick="mostrarOcultar('content_metas'); return false;">
+                                                                	<i class="icon-btn-arrow-toggle"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div id="content_metas" class="content_metas">
+                                                                <div class="control-group">
+                                                                        <?php print $this->element->title;?>
+                                                                </div>
+                                                                <div class="control-group">
+                                                                        <?php print $this->element->description;?>
+                                                                </div>
+                                                                <div class="control-group">
+                                                                        <?php print $this->element->keywords;?>
+                                                                </div>
+                                                                <div class="control-group">
+                                                                        <?php print $this->element->robots;?>
+                                                                </div>
+                                                                <div class="control-group">
+                                                                        <?php print $this->element->autor;?>
+                                                                </div>
+                                                            </div>
+                                                    </div>                                                                                            
+                                            </div>
+                                                <div class="article_footer">
+                                                    <ul>
+                                                        <li class="span3 offset3">
+                                                            <button class=" btn-block btn_public" type="submit" name="public" value="1">
+                                                                <i class="icon-btn-public"></i> <?php print $this->element->public->getLabel(); ?>
+                                                            </button>
+
+                                                        </li>
+                                                        <li class="span3">
+                                                                <button class=" btn-block btn_privat" type="submit" name="privat" value="0">
+                                                                    <i class="icon-btn-private"></i> <?php print $this->element->privat->getLabel(); ?>
+                                                                </button>
+                                                        </li>
+                                                        <li class="span3">
+                                                                <button class=" btn-block btn_cancel" type="reset" name="cancelar">
+                                                                    <i class="icon-btn-delete"></i> <?php print $this->element->cancelar->getLabel(); ?>
+                                                                </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>   
+                                                <div class="clearfix"></div>      
+                                                </form>

@@ -1,0 +1,34 @@
+
+                                            <div class="separador"></div>
+                                                <form class="form-horizontal" action="<?php print $this->escape($this->element->getAction()); ?>" method="<?php print $this->escape($this->element->getMethod()); ?>">
+                                                    <?php print $this->element->id;?>
+                                                    <div class="control-group">
+                                                        <div class="span12">
+                                                            <?php print $this->element->titol;?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                    	<div class="span12">								
+                                                             <?php print $this->element->descripcio;?>                                                         
+                                                      </div>                                                 
+                                                  </div> 
+                                                  <div class="article_footer">
+                                                        <ul>
+                                                            <li class="span2 offset8">
+                                                            	<button class=" btn-block btn_public" type="submit" id="crear">
+                                                                	<i class="icon-btn-public"></i> <?php print $this->element->editar->getLabel(); ?>
+                                                                </button>
+                                                            </li>
+                                                            <li class="span2">
+                                                                
+                                                                <!--<button class=" btn-block btn_cancel" id="cancelar" type="reset" onclick="javascript:parent.jQuery.fancybox.close();">
+                                                                    <i class="icon-btn-delete"></i> <?php print $this->element->cancelar->getLabel(); ?>
+                                                                </button>-->
+                                                                <button class=" btn-block btn_cancel" id="cancelar" type="reset">
+                                                                    <i class="icon-btn-delete"></i> <?php print $this->element->cancelar->getLabel(); ?>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                   </div>  
+                                                   <div class="clearfix"></div>  
+                                               </form>

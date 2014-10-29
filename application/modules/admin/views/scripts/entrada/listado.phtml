@@ -1,0 +1,50 @@
+                        <div class="separador"></div>
+                    	<article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-news-listar"></icon>
+                                </div>
+                                <div class="span11">
+                                	<div class="article">
+                                    	<div class="article_cos">
+                                        <?php if($this->listEntrades->count() > 0): ?>
+                                            <?php 
+                                                $i = 0;
+                                                foreach($this->listEntrades as $entrada):
+                                                    $i++;
+                                                    ?>
+                                            <div class="widget_list_users">
+                                            	<div class="widget_list_users_header"><?php echo $entrada->getData()->format('d.m.Y'); ?></div>
+                                                <div class="widget_list_users_cos">
+                                                	<div class="span10">
+                                                    	<span><?php echo stripslashes($entrada->getTitol()); ?></span>
+                                                        <p><?php echo $this->neteja->limitaText($this->neteja->tagsNets(stripslashes($entrada->getText())),160);?> ...</p>  
+                                                    </div>
+                                                    <div class="span2 text_align_r">
+                                                        <ul>
+                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/entrada/editar/id/<?php echo $entrada->getId()?>/m/<?php echo $entrada->getMetas()->getId();?>/i/<?php echo ($entrada->getImatges() == null) ? 0 : $entrada->getImatges()->getId();?>/s/<?php echo ($entrada->getMenu()==null)? 0:$entrada->getMenu()->getId();?>/d/<?php echo ($entrada->getDocuments() == null) ? 0 : $entrada->getDocuments()->getId();?>" id="editar<?php echo $i?>" rel="tooltip" title="Editar Entrada"><i class="icon-btn-edit-gris-fort"></i></a></li>
+                                                            <?php if ($entrada->getMenu()==null):?>
+                                                                <li><a href="<?php echo $this->baseUrl ?>/admin/entrada/eliminar/id/<?php echo $entrada->getId() ?>/s/<?php echo ($entrada->getMenu()==null)? 0:$entrada->getMenu()->getId();?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar entrada" onClick='return confirm("¿Estás seguro que quiere borrar esta entrada?")'><i class="icon-btn-close-gris-fort"></i></a></li>                                                    	
+                                                                <?php else:?>
+                                                                <li><a href="javascript:void(0)" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar entrada" onClick='return alert("No se puede borrar esta entrada porque tiene menús dependientes. Para poder borrarla primero edita la entrada y desvincula cualquier tipo de menú.")'><i class="icon-btn-close-gris-fort"></i></a></li>
+                                                            <?php endif;?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <?php endforeach;?>
+                                             <?php else:?>
+                                                <p>Lo sentimos, no hay  <strong>entradas</strong> en el sistema</p>
+                                            <?php endif;?>
+                                        </div>
+                                        <div class="article_footer">
+                                            <div class="pagination pagination-right">
+                                                <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </article>

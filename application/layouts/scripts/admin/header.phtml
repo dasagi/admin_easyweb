@@ -1,0 +1,27 @@
+    <!--start: Header -->
+    <header>
+        	<div class="container container-max-width bg_easyweb2_0">
+                <div class="row-fluid">
+                	<div class="span4">
+                    	<div id="logo" >
+                            <a href="<?php echo $this->baseUrl?>/admin/index"><img src="<?php echo $this->baseUrl()."/administrador/img/logo.png"?>" alt="Easyweb Corporativa 2.0" width="245" height="63" title="Easyweb Corporativa 2.0">
+                            	
+                            </a>
+                		</div>  
+                    </div>
+                    <div class="span8">
+                    	<div class="icons_top">
+                            <?php if($this->layout()->header):?>
+                                <ul>
+                                    <li><a href="<?php echo $this->baseUrl()."/admin/index"?>"><i class="icon-home"></i> </a></li>
+                                    <li><a href="mailto:info@omniasolutions.es?Subject=Hola Easyweb Corporativa"><i class="icon-mail"></i> </a></li>
+                                    <li><a href="<?php echo $this->baseUrl?>/admin/login/logout"><i class="icon-desconect"></i></a> </li>
+                    		</ul>                         
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>    
+   <!--end: Header -->
+

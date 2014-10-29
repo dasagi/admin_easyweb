@@ -1,0 +1,64 @@
+/************************************************************************************
+								start:Estils generals
+*************************************************************************************/
+
+.body_color{
+	background-color: #fff;
+	font-family: 'Maven Pro', sans-serif; 
+}
+.container_tpl{
+	margin: 30px auto;
+	background-color: #007DB8;
+	width: 50%;
+	height: auto;
+	border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+.header_tpl{
+	background-color:#58C2DF;
+	background-image: url(../img/logo_mail.png);
+	background-repeat:no-repeat;
+	background-position:center;
+
+	height: 60px;
+	padding: 8px;
+
+    border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	 -moz-border-top-left-radius: 10px;
+	 -moz-border-top-right-radius: 10px;
+}
+.cos_tpl{
+	padding: 8px;
+	font-size: 16px;
+}
+	.cos_tpl a{
+		font-size: 15px;
+		font-family: 'Maven Pro', sans-serif; 
+		color: #ACF4FF;
+
+	}
+	.cos_tpl a:hover{
+		text-decoration: underline;
+		color: #ACF4FF;
+	}
+.footer_tpl{
+	background-color:#00AFE9;
+
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	 -moz-border-bottom-left-radius: 10px;
+	 -moz-border-bottom-right-radius: 10px;
+
+	height: auto;
+	font-size: 13px;
+	padding: 8px;
+	text-align: right;
+
+	
+}

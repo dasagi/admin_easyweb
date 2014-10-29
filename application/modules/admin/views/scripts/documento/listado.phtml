@@ -1,0 +1,47 @@
+                        <div class="separador"></div>
+                        <article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-upload-docs"></icon>
+                                </div>
+                                <div class="span11">
+                                    <div class="article">
+                                        <div class="article_cos">
+                                            <ul class="thumbnails">
+                                            <?php if($this->listDocs->count() > 0): ?>    
+                                                <?php 
+                                                    $i = 0;
+                                                    foreach($this->listDocs as $documento):
+                                                        $i++;
+                                                        ?>
+                                                        <li class="span3">
+                                                            <div class="thumbnail widget_img">
+                                                                <div class="article_header">
+                                                                    <h1><span> <?php echo $documento->getData()->format('d.m.Y');?></span></h1>
+                                                                    <a href="<?php echo $this->baseUrl ?>/admin/documento/eliminar/id/<?php echo $documento->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>" onClick='return confirm("¿Estás seguro que quiere borrar este documento?")'><i class="icon-btn-close-lt rigth" id="borra<?php echo $i?>"  rel="tooltip" title="Eliminar"></i></a>
+                                                                </div>
+                                                                <div class="article_cos">
+                                                                    <div class="row-fluid text_align_c">
+                                                                        <a href="<?php echo $this->baseUrl ?>/files/docs/<?php echo $documento->getRuta();?>" target="_blank"><?php $this->mostraImgDoc->mostraImgDoc($documento->getRuta())?></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="article_footer">
+                                                                    <h1><?php echo ($documento->getTitol()!=null) ? $this->neteja->limitaText($documento->getTitol(),14)."...":$this->neteja->limitaNomImg($documento->getRuta());?></h1>
+                                                                </div>
+                                                            </div>
+                                                        </li>                                                        
+                                                <?php endforeach;?>
+                                                <?php else:?>
+                                                <p>Lo sentimos, no hay  <strong>documentos</strong> en el sistema</p>
+                                            <?php endif;?>
+                                            </ul>	
+                                        </div>
+                                        <div class="article_footer">
+                                            <div class="pagination pagination-right">
+                                               <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>

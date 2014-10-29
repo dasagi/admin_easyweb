@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="<?php echo $this->baseUrl().'/css/bootstrap.css'?>" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->baseUrl().'/css/bootstrap-responsive.css'?>" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->baseUrl().'/administrador/css/style.css'?>" media="screen" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="<?php echo $this->baseUrl().'/js/jquery-1.8.2.min.js'?>"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl().'/js/bootstrap.js'?>"></script>
+        
+        <script>
+            
+            function refresh(){
+                parent.jQuery.fancybox.close();
+                parent.location.reload(true);
+            }
+            
+            $(document).ready
+            ( 
+            
+            
+                function(){
+                                           
+                          //$("#crear").click().parent.location.reload(true);jQuery.fancybox.close(fadeOut('Slow'));
+                          $("#cancelar").click(refresh);
+                          $(".cos_fancybox").height(390).css(); 
+                      }
+            );
+        </script>
+        
+    </head>
+    <body style="background-color: #EFEFEF;">
+        
+                                    <div class="row-fluid cos_fancybox">
+                                        <div class="widget_form">
+                                            <?php if(!empty($this->alert)):?>
+                                                <div class="alert alert_lila"><?php echo $this->alert?>
+                                                    <button type="button" class="close" data-dismiss="alert"><i class="icon-close-alert"></i></button>
+                                                </div>
+                                            <?php endif ?>
+                                             <div class="separador"></div>
+                                               <?php echo $this->form ?>
+                                        </div>
+                                      </div>
+        <script>
+        </script>
+        </body>
+</html>

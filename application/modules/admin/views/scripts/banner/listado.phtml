@@ -1,0 +1,60 @@
+                        <?php if(!empty($this->alert)):?>
+                        <div class="alert alert_lila"><?php echo $this->alert?>
+                            <button type="button" class="close" data-dismiss="alert"><i class="icon-close-alert"></i></button>
+                        </div>
+                        <?php endif ?>
+                        <div class="separador"></div>
+                        <article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-banner2-list"></icon>
+                                </div>
+                                <div class="span11">
+                                    <div class="article">        
+                                        <div class="article_cos">
+                                           
+                                            <?php if($this->listBanners->count() > 0): ?>    
+                                                <?php 
+                                                    $i= 0;
+                                                    foreach($this->listBanners as $banner):
+                                                    $i++;
+                                                    ?>                                         
+                                            <div class="widget_list_users">
+                                                    <div class="widget_list_users_header"><?php echo $banner->getData()->format('d.m.Y');?></div>
+                                                    <div class="widget_list_users_cos">
+                                                        <div class="mask">
+                                                            <a href="<?php echo $this->baseUrl ?>/files/<?php echo $banner->getRuta();?>" class="imgs" rel="tip" title="<b>Título: </b> <?php echo $banner->getTitol();?> <b>Fecha: </b><?php echo $banner->getData()->format('d.m.Y');?>"><img src="<?php echo $this->baseUrl ?>/files/<?php echo $banner->getRuta();?>" alt="tip"></a>
+                                                        </div>
+                                                        <div class="article_footer">
+                                                                <div class="article_footer_cos">
+                                                                    <div class="span8"><span><?php echo $banner->getTitol()?> </span></div>                                                                    
+                                                                    <div class="span4">
+                                                                        <ul>
+                                                                        <?php if ($banner->getActiu()==0):?>
+                                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/banner/publicacio/id/<?php echo $banner->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>/val/1" id="publica<?php echo $i?>" rel="tooltip" title="Publicar"><i class="icon-btn-public-gris"></i></a></i></li>
+                                                                        <?php else:?>
+                                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/banner/publicacio/id/<?php echo $banner->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>/val/0" id="despublica<?php echo $i?>" rel="tooltip" title="Despublicar"><i class="icon-btn-private-gris"></i></a></li>
+                                                                        <?php endif;?>
+                                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/banner/eliminar/id/<?php echo $banner->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>" onClick='return confirm("¿Estás seguro que quiere borrar este banner?")' id="borra<?php echo $i?>" rel="tooltip" title="Eliminar banner"><i class="icon-btn-close-gris"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                        </div>
+                                                    </div>     
+                                                    <div class="clearfix"></div>
+                                             </div>                                                                                         
+                                                <?php endforeach;?>
+                                                <?php else:?>
+                                                <p>Lo sentimos, no hay  <strong>banners </strong> en el sistema</p>
+                                            <?php endif;?>                                          
+                                        </div>
+                                        <div class="article_footer">
+                                            <div class="pagination pagination-right">
+                                               <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>

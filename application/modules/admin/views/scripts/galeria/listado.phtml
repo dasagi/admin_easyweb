@@ -1,0 +1,65 @@
+                        <div class="separador"></div>
+                        <article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-img"></icon>
+                                </div>
+                                <div class="span11">
+                                    <div class="article">
+                                        <div class="article_cos">
+                                            <ul class="thumbnails">
+                                                <?php if($this->listGalerias->count() > 0): ?>    
+                                                <?php 
+                                                    $i = 0;
+                                                    foreach($this->listGalerias as $galeria):
+                                                        $i++;
+                                                        
+                                                ?>
+                                            	<li class="span6">
+                                                	<div class="thumbnail widget_list_galeria">
+                                                    	<div class="widget_list_galeria_header">
+                                                         	<div class="span5"><?php echo $galeria->getData()->format('d.m.Y'); ?></div>
+                                                            <div class="span7 text_align_r">
+                                                            	<ul>
+                                                                    <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/crear/id/<?php echo $galeria->getId()?>" id="sube<?php echo $i?>" rel="tooltip" title="Subir imágenes"><i class="icon-btn-upload-gal"></i></a></li>
+                                                                    <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/editar/id/<?php echo $galeria->getId()?>/m/<?php echo $galeria->getMetas()->getId();?>" id="edita<?php echo $i?>" rel="tooltip" title="Editar"><i class="icon-btn-edit-gris"></i></a></li>
+                                                                    <?php if ($galeria->getPublicar()==0):?>
+                                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/publicacio/id/<?php echo $galeria->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>/val/1" id="publica<?php echo $i?>" rel="tooltip" title="Publicar"><i class="icon-btn-public-gris"></i></a></i></li>
+                                                                        <?php else:?>
+                                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/publicacio/id/<?php echo $galeria->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>/val/0" id="despublica<?php echo $i?>" rel="tooltip" title="Despublicar"><i class="icon-btn-private-gris"></i></a></li>
+                                                                        <?php endif;?>
+                                                                    <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/eliminar/id/<?php echo $galeria->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?>/a/1" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar galeria" onClick='return confirm("¿Estás seguro que quiere borrar esta galería?")'><i class="icon-btn-close-gris"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div class="widget_list_galeria_cos">
+                                                           
+                                                            <?php if(count($galeria->getImagen()->get(0))==0):?>                                                           
+                                                               <img src=" <?php echo $this->baseUrl ?>/timthumb.php?src=administrador/img/nofoto.png&a=t&w=475&h=329">                                                     
+                                                            <?php else:?>                                                            
+                                                               <img src=" <?php echo $this->baseUrl ?>/timthumb.php?src=files/img/<?php echo $galeria->getImagen()->get(0)->getRuta();?>&a=t&w=475&h=329">                                                          
+                                                            <?php endif;?>                                                                                           
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="widget_list_galeria_footer">                                                         
+                                                           <span><?php echo stripslashes($galeria->getTitol());?></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <?php endforeach;?>                                               
+                                                <?php else:?>
+                                                <p>Lo sentimos, no hay  <strong>galerias</strong> en el sistema</p>
+                                            <?php endif;?>
+                                            </ul>
+                                        </div>
+                                        <div class="article_footer">
+                                            <div class="pagination pagination-right">
+                                               <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+

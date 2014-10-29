@@ -1,0 +1,51 @@
+                        <div class="separador"></div>
+                        <article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-img"></icon>
+                                </div>
+                                <div class="span11">
+                                    <div class="article">
+                                        <div class="article_cos">
+                                            <ul class="thumbnails">
+                                                <?php if($this->listImagenes->count() > 0): ?>    
+                                                <?php 
+                                                    $i = 0;
+                                                    foreach($this->listImagenes as $galeria):
+                                                        $i++;
+                                                        
+                                                        ?>
+                                            	<li class="span6">
+                                                	<div class="thumbnail widget_list_galeria">
+                                                    	<div class="widget_list_galeria_header">
+                                                         	<div class="span7"><?php echo $galeria->getData()->format('d.m.Y'); ?></div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div class="widget_list_galeria_cos">
+                                                            
+                                                            <img src="<?php echo $this->baseUrl ?>/files/<?php echo $galeria->getRuta();?>">
+                                                            <?php echo $galeria->getGaleria()->getTitol()?>
+                                                            	<!--<a href="files/<?//php echo $galeria->getImagen()->getRuta(); ?>" class="img" rel="tip"> <img src="files/<?//php echo $galeria->getImagen()->getRuta(); ?>" alt="tip"> asdfasdf</a>-->
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="widget_list_galeria_footer">
+                                                           <span><?php echo $galeria->getTitol();?></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <?php endforeach;?>                                               
+                                                <?php else:?>
+                                                <p>Lo sentimos, no hay  <strong>galerias</strong> en el sistema</p>
+                                            <?php endif;?>
+                                            </ul>
+                                        </div>
+                                        <div class="article_footer">
+                                            <div class="pagination pagination-right">
+                                               <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+

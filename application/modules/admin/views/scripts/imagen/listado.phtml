@@ -1,0 +1,43 @@
+                        <div class="separador"></div>
+                        <article>
+                        	<div class="row-fluid">
+                            	<div class="span1">
+                                    <icon class="icon-img"></icon>
+                                </div>
+                                <div class="span11">
+                                    <div class="article">
+                                        <div class="article_cos">
+                                            <ul class="thumbnails">
+                                                <div class="alert alert-info margin_img">Tienes almacenadas <b><?php echo $this->total -1;?></b> imágenes</div>                                               
+                                                <?php 
+                                                    $i = 0;
+                                                    foreach($this->listImagenes as $imagen):
+                                                        $i++;
+                                                        ?>
+                                                    <?php if($imagen->getTitol()!=-1)://obvio així la imatge amb id = 0 perquè està assignat el títol -1?>
+                                                    <li class="span3" >
+                                                            <div class="thumbnail widget_img">
+                                                                <a href="<?php echo $this->baseUrl ?>/files/img/<?php echo $imagen->getRuta();?>" class="imgs" rel="tip" title="Título: <?php echo ($imagen->getTitol()==null) ? "Sin titulo":$imagen->getTitol();?> Fecha: <?php echo $imagen->getData()->format('d.m.Y');?>"><img src="<?php echo $this->baseUrl ?>/timthumb.php?src=files/img/<?php echo $imagen->getRuta();?>&a=t&w=475&h=329" alt="Título: <?php echo ($imagen->getTitol()==null) ? "Sin título":$imagen->getTitol();?> Fecha: <?php echo $imagen->getData()->format('d.m.Y');?>"></a>
+                                                                <div class="widget_img_footer"> 
+                                                                    <ul>
+                                                                        <!--<li><a href="#"> <i class="icon-btn-edit-gris-lt"></i></a></li>
+                                                                        <li><a href="#"> <i class="icon-btn-private-lt"></i></a></li>-->
+                                                                        <li><a href="<?php echo $this->baseUrl ?>/admin/imagen/eliminar/id/<?php echo $imagen->getId() ?>/page/<?php echo $this->paginator->getCurrentPageNumber();?> " id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("¿Estás seguro que quiere borrar esta imagen?")'> <i class="icon-btn-close-lt"></i></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>                                                    
+                                                    </li>
+                                                    <?php endif;?>
+                                                <?php endforeach;?>  
+                                            </ul>	  
+                                        </div>
+                                        <div class="article_footer">
+                                            <div class="pagination pagination-right">
+                                               <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>

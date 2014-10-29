@@ -1,0 +1,38 @@
+
+<?php if ($this->pageCount): ?>
+<ul>
+<!-- Previous page link -->
+<?php if (isset($this->previous)): ?>
+  
+    <li><a href="<?php echo $this->url(array('page' => $this->previous)); ?>"><i class="icon-arrow-left-lt-white"></i></a></li>
+
+<?php else: ?>
+  
+    <li></li>
+    
+<?php endif; ?>
+
+<!-- Numbered page links -->
+<?php foreach ($this->pagesInRange as $page): ?>
+  <?php if ($page != $this->current): ?>
+
+    <li><a href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a></li>
+      
+  <?php else: ?>
+    <li class="active"><a href="#"><?php echo $page; ?></a></li>
+  <?php endif; ?>
+<?php endforeach; ?>
+
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+    
+   <li><a href="<?php echo $this->url(array('page' => $this->next)); ?>"><i class="icon-arrow-right-lt-white"></i></a></li>
+
+
+<?php else: ?>
+    
+   <li></li>
+  
+<?php endif; ?>
+</ul>
+<?php endif; ?>

@@ -1,0 +1,209 @@
+                        <?php if (count($this->listaPortades) > 0): ?>
+                           <?php 
+                           $i = 0;
+                           foreach ($this->listaPortades as $portada):
+                               $i++;
+                               ?>     
+                               <?php if($portada->getTipus()=='entrada'):?>
+                                    <article>     
+                                    <div class="row-fluid">
+                                        <div class="span1">
+                                            <icon class="icon-news"></icon>
+                                        </div>                               
+                                        <div class="span11">
+                                             <div class="article">
+                                                <div class="article_header"><?php echo $portada->getEntrada()->getData()->format('d.m.Y');?></div>
+                                                <div class="article_cos">
+                                                        <?php if(count($portada->getEntrada()->getImatges())!=0 && $portada->getEntrada()->getImatges()->getTitol()!=-1):?>    
+                                                            <img src="<?php echo $this->baseUrl ?>/timthumb.php?src=files/img/<?php echo $portada->getEntrada()->getImatges()->getRuta();?>&a=t&w=148&h=99" alt="Imágen: <?php echo stripslashes($portada->getEntrada()->getImatges()->getRuta());?> | Título: <?php echo stripslashes($portada->getEntrada()->getImatges()->getTitol());?>" title="Imágen: <?php echo stripslashes($portada->getEntrada()->getImatges()->getRuta());?> | Título: <?php echo stripslashes($portada->getEntrada()->getImatges()->getTitol());?>">                          
+                                                        <?php endif;?>                                                                                    
+                                                    <h1><?php echo  stripslashes($portada->getEntrada()->getTitol());?></h1>
+                                                    <?php echo $this->neteja->limitaText($this->neteja->tagsNets(stripslashes($portada->getEntrada()->getText())),260);?> ...
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="article_footer">
+                                                        <div class="article_footer_cos">
+                                                        <ul>
+                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/entrada/editar/id/<?php echo $portada->getEntrada()->getId()?>/m/<?php echo $portada->getEntrada()->getMetas()->getId();?>/i/<?php echo ($portada->getEntrada()->getImatges() == null) ? 0 : $portada->getEntrada()->getImatges()->getId();?>/s/<?php echo ($portada->getEntrada()->getMenu()==null)? 0:$portada->getEntrada()->getMenu()->getId();?>/d/<?php echo ($portada->getEntrada()->getDocuments() == null) ? 0 : $portada->getEntrada()->getDocuments()->getId();?>" id="edita<?php echo $i?>" rel="tooltip" title="Editar"><i class="icon-btn-edit-gris"></i></a></li>
+                                                            <?php if($portada->getEntrada()->getPublicar()==0):?>
+                                                                <li><a href="<?php echo $this->baseUrl?>/admin/entrada/publicacio/id/<?php echo $portada->getEntrada()->getId()?>/val/1" id="publica<?php echo $i?>" rel="tooltip" title="Publicar"><i class="icon-btn-public-gris"></i></a></i></li>
+                                                                <?php else:?>
+                                                                <li><a href="<?php echo $this->baseUrl?>/admin/entrada/publicacio/id/<?php echo $portada->getEntrada()->getId()?>/val/0" id="despublica<?php echo $i?>" rel="tooltip" title="Despublicar"><i class="icon-btn-private-gris"></i></a></li>
+                                                            <?php endif;?>    
+                                                            <?php if ($portada->getEntrada()->getMenu()==null):?>
+                                                                <li><a href="<?php echo $this->baseUrl ?>/admin/index/eliminar/id/<?php echo $portada->getId() ?>/e/<?php echo $portada->getEntrada()->getId() ?>" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("¿Estás seguro que quieres borrar esta entrada?")'><i class="icon-btn-close-gris"></i></a></li>
+                                                            <?php else:?>
+                                                                <li><a href="javascript:void(0)" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("No se puede borrar esta entrada porque tiene menús dependientes. Para poder borrarla primero edita la entrada y desvincula cualquier tipo de menú.")'><i class="icon-btn-close-gris"></i></a></li>
+                                                            <?php endif;?>    
+                                                        </ul>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                        </div>
+                                    </div>
+                                    </article>
+                               <?php elseif($portada->getTipus()=='galeria'):?>
+                                    <article>
+                                    <div class="row-fluid">
+                                        <div class="span1">
+                                            <icon class="icon-upload-img"></icon>
+                                        </div>
+                                        <div class="span11">
+                                                <div class="article">
+                                                <div class="article_header"><?php echo $portada->getGaleria()->getData()->format('d.m.Y');?> <h1><?php echo stripslashes($portada->getGaleria()->getTitol());?></h1></div>
+                                                <div class="article_cos">
+                                                    <?php echo $this->neteja->limitaText($this->neteja->tagsNets(stripslashes($portada->getGaleria()->getDescripcio())),260);?> ...
+                                                    <ul class="thumbnails">
+                                                        <?php if(count($portada->getGaleria()->getImagen())!=0):?>
+                                                            <?php foreach ($portada->getGaleria()->getImagen() as $imatge):?>
+                                                             
+                                                            <li class="span3">
+                                                                    <div class="thumbnail widget_img">
+                                                                        <a href="<?php echo $this->baseUrl ?>/files/img/<?php echo $imatge->getRuta();?>" class="imgs" rel="tip" alt="Título: <?php echo ($imatge->getTitol()==null) ? "Imágen sin título":$imatge->getTitol();?>" title="Título: <?php echo ($imatge->getTitol()==null) ? "Imágen sin título":$imatge->getTitol();?>"><img src="<?php echo $this->baseUrl ?>/timthumb.php?src=files/img/<?php echo $imatge->getRuta();?>&a=t&w=475&h=329" alt="Título: <?php echo ($imatge->getTitol()==null) ? "Imágen sin título":$imatge->getTitol();?>" title="Título: <?php echo ($imatge->getTitol()==null) ? "Imágen sin título":$imatge->getTitol();?>"></a>
+                                                                        <div class="widget_img_footer"> <a href="<?php echo $this->baseUrl ?>/admin/galeria/eliminarimagen/id/<?php echo $imatge->getId();?>/a/3" title="Eliminar" onClick='return confirm("¿Estás seguro que quieres borrar esta imágen?")'> <i class="icon-btn-close-lt"></a></i></div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>                                                    
+                                                            </li> 
+                                                            <?php endforeach;?>
+                                                        <?php endif;?>                                                                                                          
+                                                    </ul>                                                  
+                                                </div>
+                                                <div class="article_footer">
+                                                        <div class="article_footer_cos">
+                                                        <ul>
+                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/editar/id/<?php echo $portada->getGaleria()->getId()?>/m/<?php echo $portada->getGaleria()->getMetas()->getId();?>" id="edita<?php echo $i?>" rel="tooltip" title="Editar"><i class="icon-btn-edit-gris"></i></a></li>
+                                                            <?php if($portada->getGaleria()->getPublicar()==0):?>
+                                                                <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/publicacio/id/<?php echo $portada->getGaleria()->getId() ?>/val/1/c/index" id="publica<?php echo $i?>" rel="tooltip" title="Publicar"><i class="icon-btn-public-gris"></i></a></i></li>
+                                                            <?php else:?>
+                                                                <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/publicacio/id/<?php echo $portada->getGaleria()->getId() ?>/val/0/c/index" id="despublica<?php echo $i?>" rel="tooltip" title="Despublicar"><i class="icon-btn-private-gris"></i></a></li>
+                                                            <?php endif;?>
+                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/galeria/eliminar/id/<?php echo $portada->getGaleria()->getId()?>/c/index" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("¿Estás seguro que quieres borrar esta galería?")'><i class="icon-btn-close-gris"></i></a></li>
+                                                        </ul>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            <?php elseif($portada->getTipus()=='usuari'):?>                                        
+                                <article>
+                                    <div class="row-fluid">
+                                        <div class="span1">
+                                            <icon class="icon-users"></icon>
+                                        </div>
+                                        <div class="span11">
+                                                <div class="article">
+                                                <div class="article_header">
+                                                    <?php echo $portada->getUsuari()->getData()->format('d.m.Y');?>
+                                                    <ul>
+                                                        <li> <a href="<?php echo $this->baseUrl ?>/admin/usuario/editar/id/<?php echo $portada->getUsuari()->getId()?>" id="edita<?php echo $i?>"rel="tooltip" title="Editar"><i class="icon-btn-edit-gris"></i></a></li>
+                                                        <li><a href="<?php echo $this->baseUrl ?>/admin/usuario/eliminar/id/<?php echo $portada->getUsuari()->getId()?>/c/index" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("¿Estás seguro que quieres borrar este usuario?")'><i class="icon-btn-close-gris"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="article_cos no-border">                             
+                                                        Administrador: <h2><?php echo stripslashes($portada->getUsuari()->getNom());?> <?php echo stripslashes($portada->getUsuari()->getCognoms());?></h2>                                            
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            <?php elseif($portada->getTipus()=='document'):?>                        
+                                <article>
+                                        <div class="row-fluid">
+                                        <div class="span1">
+                                            <icon class="icon-upload-docs"></icon>
+                                        </div>
+                                        <div class="span11">
+                                                <div class="article span3">
+                                                <div class="article_header"><?php echo $portada->getDocument()->getData()->format('d.m.Y');?> <a href="<?php echo $this->baseUrl ?>/admin/documento/eliminar/id/<?php echo $portada->getDocument()->getId()?>/c/index"><i class="icon-btn-close-lt rigth"id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("¿Estás seguro que quieres borrar este documento?")' ></a></i></div>
+                                                <div class="article_cos">
+                                                        <div class="row-fluid text_align_c">
+                                                            <a href="<?php echo $this->baseUrl ?>/files/docs/<?php echo $portada->getDocument()->getRuta();?>" target="_blank"><?php $this->mostraImgDoc->mostraImgDoc($portada->getDocument()->getRuta())?></i></a>
+                                                        </div>
+                                                </div>
+                                                <div class="article_footer">
+                                                    <h1><?php echo (stripslashes($portada->getDocument()->getTitol())!=null) ? $this->neteja->limitaText(stripslashes($portada->getDocument()->getTitol()),14)."...":$this->neteja->limitaNomImg($portada->getDocument()->getRuta());?></h1>                                               
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </article>  
+                            <?php elseif($portada->getTipus()=='menu'):?>
+                                <article>
+                                    <div class="row-fluid">
+                                        <div class="span1">
+                                            <icon class="icon-menus"></icon>
+                                        </div>
+                                        <div class="span11">
+                                                <div class="article">
+                                                <div class="article_header"><?php echo $portada->getMenu()->getData()->format('d.m.Y');?>
+                                                    <ul>   
+                                                        <?php if($portada->getMenu()->getParent()->getId()!=0):?>
+                                                            <li><a href="<?php echo $this->url(array('module'=>'admin','controller'=>'menu','action'=>'editarsubmenu')).'/sub/'.$portada->getMenu()->getId();?>" id="edita<?php echo $i?>" title="Editar" class="fancybox fancybox.iframe"><i class="icon-btn-edit-gris"></i></a></li>
+                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/menu/eliminar/id/<?php echo $portada->getMenu()->getId()?>/c/indexsub" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("¿Estás seguro que quieres borrar este Submenú?")'><i class="icon-btn-close-gris"></i></a></li>
+                                                        <?php else: ?>
+                                                            <li> <a href="<?php echo $this->baseUrl ?>/admin/menu/editarmenu/id/<?php echo $portada->getMenu()->getId()?>" id="edita<?php echo $i?>" rel="tooltip" title="Editar"><i class="icon-btn-edit-gris"></i></a></li>
+                                                            <li><a href="<?php echo $this->baseUrl ?>/admin/menu/eliminar/id/<?php echo $portada->getMenu()->getId()?>/c/index" id="borra<?php echo $i?>" rel="tooltip" title="Eliminar" onClick='return confirm("Estás seguro que quieres borrar este menú? Recuarda que todas las secciones dependientes también se borrarán.")'><i class="icon-btn-close-gris"></i></a></li>                                                        
+    
+                                                        <?php endif;?>
+                                                    </ul>
+                                                </div>
+                                                <div class="article_cos no-border">
+                                                    <ul>
+                                                        <?php if($portada->getMenu()->getParent()->getId()!=0):?>
+                                                            <li>Submenú: <h2><?php echo stripslashes($portada->getMenu()->getTitol());?></h2></li>
+                                                         <?php else: ?>                                                        
+                                                            <li>Menú: <h2><?php echo stripslashes($portada->getMenu()->getTitol());?></h2></li>
+                                                         <?php endif; ?>
+                                                    </ul>
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </article
+                                <?php elseif($portada->getTipus()=='corp'):?>
+                                <article>
+                                    <div class="row-fluid">
+                                        <div class="span1">
+                                            <icon class="icon-users"></icon>
+                                        </div>
+                                        <div class="span11">
+                                                <div class="article">
+                                                <div class="article_header">
+                                                    
+                                                </div>
+                                                <div class="article_cos no-border">                             
+                                                                   
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            <?php endif;?>
+                        <?php endforeach;?> 
+                     <?php else:?>           
+                                <article> 
+                                    <div class="row-fluid">
+                                        <div class="span1">                                        
+                                        </div>
+                                        <div class="span11">
+                                                <div class="article">
+                                                <div class="article_header"></div>
+                                                    <div class="article_cos no-border">
+                                                        <img src="<?php echo $this->baseUrl ?>/files/img/easyweb_corp.png" alt="Easyweb Corporativa" title="Easyweb Corporativa">                          
+                                                        <h1><span>El equipo de Easyweb te da la bienvenida  y te invita a disfrutar construyendo tu proyecto web.</span></h1>
+                                                        En este tablero encontraras todos tus movimientos, si creas menús, contenido, noticias, documentos y galerías de imágenes te irán saliendo aquí para que puedas ir siguiendo como evoluciona tu proyecto.
+
+                                                       <br><br>Gracias por confiar en Easyweb, esperamos que tengas una agradable experiencia y  disfrutes creando tu web.
+                                                       
+                                                        
+                                                            <div class="text_align_r"><b> <br>El equipo de easyweb.</b></div>
+                                                        
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </article>
+                     <?php endif;?>

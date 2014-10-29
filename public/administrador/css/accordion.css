@@ -1,0 +1,30 @@
+/* Main Color (#69b200) */
+	
+/* Secondary Color (#ecf3e3) */
+[class*="accordion"] {
+
+	  -webkit-border-radius: 6px;
+  	     -moz-border-radius: 6px;
+       	      border-radius: 6px;
+	}
+
+    .accordion-group {
+       background-color: #EFEFEF;
+	   margin-bottom:5px;
+	   border:1px solid #e5e5e5;
+    }
+
+.accordion{margin-bottom:0px; }
+
+.accordion-heading{border-bottom:0;}
+.accordion-heading .accordion-toggle{display:block;}
+.accordion-toggle{cursor:pointer; height:10px;}
+.accordion-inner{padding:5px;border-top:1px solid #e5e5e5;}
+
+.accordion-body{-webkit-transition:"height .4s linear";-moz-transition:"height .4s linear";-o-transition:"height .4s linear";transition:"height .4s linear";}
+.accordion-heading{position:relative;}.accordion-group 
+.accordion-heading:after{pointer-events:none;color:#fff;content:"";background:url(../img/stick.png) no-repeat; background-position:right 0px;font-size:15px;padding:13px 13px;position:absolute;top:0;right:0;bottom:auto auto;left:auto; margin:5px 0 0 0;}
+.accordion-group .accordion-heading.accordion-opened:after{content:""; background:url(../img/stick2.png) no-repeat; background-position:right 0px;padding:13px 13px; margin:5px 0 0 0;}
+.accordion-group a{color:#231f20;}
+.accordion-group a:hover{text-decoration:none;}
+.accordion-group .accordion-inner{border:none;}

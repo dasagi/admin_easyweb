@@ -1,0 +1,14 @@
+<p><?php echo $this->titulo?> </p>
+<div class="form">    
+    <?php if(isset($this->alert)):?>
+        <div class="alert alert_lila"><?php echo $this->alert;?>
+            <button type="button" class="close" data-dismiss="alert"><i class="icon-close-alert"></i></button>
+        </div>  
+    <?php endif;?>
+</div>
+  <div class="row-fluid">
+      <div class="form">
+        <?php echo $this->form;?>
+      </div>
+  </div>
+  <p><a href="<?php echo $this->baseUrl?>/admin/login/index">Volver al login</a></p>

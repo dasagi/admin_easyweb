@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta charset="utf-8">
+    <?php echo $this->headTitle()?> 
+    <?php echo $this->headMeta() ?>
+    <?php echo $this->headLink()->appendStylesheet($this->baseUrl().'/administrador/css/style.css');?>
+
+    <!--start: Javascript -->
+    <?php echo $this->headScript()?>
+     <!-- jQuery -->
+      <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+    <!--end: Javascript -->
+    <!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="css/style_ie.css">
+	<![endif]-->
+</head>
+<body>
+    <!--start: Header -->
+	<?php echo $this->render("header.phtml");//cargamos el header ?>
+    <!--end: Header -->
+    <!--start: Sections -->
+	<div class=" container wrapper container-max-login">
+            <?php echo $this->layout()->content;//cargamos el contenido ?>
+        </div>
+    <!--end: Sections-->
+    <!--start: Footer -->
+        <?php echo $this->render("footer.phtml");//cargamos el footer ?>
+    <!--end: Footer -->
+</body>
+</html>
