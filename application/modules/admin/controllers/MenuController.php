@@ -145,6 +145,9 @@ class Admin_MenuController extends Zend_Controller_Action {
 
     public function indexAction()
     {
+            //carrego titles
+            $this->view->head = "Easyweb :: Secciones";
+            
             $this->view->form = $this->_getForm();
           
             

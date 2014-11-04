@@ -187,6 +187,9 @@ class Admin_GaleriaController extends Zend_Controller_Action {
 
     public function indexAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Crear Galerías";
+        
         //passo el javascript
         $this->view->headScript()->appendScript("
 
@@ -243,6 +246,9 @@ class Admin_GaleriaController extends Zend_Controller_Action {
     
     public function guardarAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Crear Galerías";
+        
         //passo el javascript
         $this->view->headScript()->appendScript("
 
@@ -394,6 +400,9 @@ class Admin_GaleriaController extends Zend_Controller_Action {
     
     public function guardarimagenAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Crear Galerías";
+        
         //deshabilitem el layout perquè el creem a la vista guardarsubmenu.phtml
         $this->_helper->getHelper('layout')->disableLayout();
         
@@ -604,6 +613,8 @@ class Admin_GaleriaController extends Zend_Controller_Action {
     
     public function editarAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Editar Galerías";
                 //passo el javascript
                 $this->view->headScript()->appendScript("
 
@@ -745,6 +756,9 @@ class Admin_GaleriaController extends Zend_Controller_Action {
 
     public function listadoAction()
     { 
+        //carrego titles
+        $this->view->head = "Easyweb :: Listado Galerías";
+        
          // conto totes les files de galeries
                 $numeroGalerias = count($this->_galeriaDoctrineDao->obtenerTodos());
                 //passo el javascript

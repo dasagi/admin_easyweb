@@ -48,7 +48,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view->doctype('XHTML1_STRICT');
 
         $view->setEncoding("UTF-8");
-        $view->headTitle(Zend_Registry::get('config')->parametros->titulo);
+
         $view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
                 ->appendHttpEquiv('Content-Language', 'en-US');
 

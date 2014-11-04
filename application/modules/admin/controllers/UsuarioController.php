@@ -68,6 +68,8 @@ class Admin_UsuarioController extends Zend_Controller_Action {
         
     }
     public function indexAction(){
+        //carrego titles
+        $this->view->head = "Easyweb :: Usuarios";
         
             //passo el codi javascript fancybox. ULL perquè si el fiquem al ini() es duplica perquè te un forward a crearAction
                 $this->view->headScript()->appendScript("
@@ -103,6 +105,9 @@ class Admin_UsuarioController extends Zend_Controller_Action {
     
     public function guardarAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Usuarios";
+        
         //passo el codi javascript fancybox. ULL perquè si el fiquem al ini() es duplica perquè te un forward a crearAction
                 $this->view->headScript()->appendScript("
                                                         $(document).ready(function() {
@@ -217,6 +222,9 @@ class Admin_UsuarioController extends Zend_Controller_Action {
 
     public function editarAction()
     {   
+        //carrego titles
+        $this->view->head = "Easyweb :: Editar Usuarios";
+        
         //passo el codi javascript fancybox. ULL perquè si el fiquem al ini() es duplica perquè te un forward a crearAction
                 $this->view->headScript()->appendScript("
                                                         $(document).ready(function() {
@@ -379,7 +387,8 @@ class Admin_UsuarioController extends Zend_Controller_Action {
 
     public function listadoAction()
     { 
-        
+        //carrego titles
+        $this->view->head = "Easyweb :: Listado Usuarios";
         //passo el codi javascript fancybox. ULL perquè si el fiquem al ini() es duplica perquè te un forward a crearAction
                 $this->view->headScript()->appendScript("
                                                         $(document).ready(function() {

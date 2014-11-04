@@ -153,6 +153,9 @@ class Admin_DocumentoController extends Zend_Controller_Action {
 
     public function indexAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Documentos";
+        
         $paginator = Zend_Paginator::factory($this->_documentoDoctrineDao->obtenerTodos());
         $paginator->setCurrentPageNumber($this->_getParam('page',0));
         
@@ -294,6 +297,9 @@ class Admin_DocumentoController extends Zend_Controller_Action {
     
     public function listadoAction()
     { 
+        //carrego titles
+        $this->view->head = "Easyweb :: Listado Documentos";
+        
         $paginator = Zend_Paginator::factory($this->_documentoDoctrineDao->obtenerTodos());
         $paginator->setCurrentPageNumber($this->_getParam('page',0));
         

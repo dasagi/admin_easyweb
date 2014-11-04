@@ -175,6 +175,9 @@ class Admin_EntradaController extends Zend_Controller_Action {
     }
    
     public function indexAction(){
+        
+        //carrego titles
+        $this->view->head = "Easyweb :: Contenido";
 
         //objecte form a la vista    
         $this->view->form = $this->_getForm();
@@ -218,6 +221,8 @@ class Admin_EntradaController extends Zend_Controller_Action {
     
     public function guardarAction(){
         
+        //carrego titles
+        $this->view->head = "Easyweb :: Contenidos";
         //creem el formulari d'entrada
         $form = $this->_getForm();
         //assignerm dades del form
@@ -494,6 +499,9 @@ class Admin_EntradaController extends Zend_Controller_Action {
     
     public function editarAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Editar Contenido";
+        
         //assignem l'id passat per get
         $id = (int) $this->getRequest()->getParam("id",0);
         $metaId = (int) $this->getRequest()->getParam("m",0);
@@ -602,6 +610,9 @@ class Admin_EntradaController extends Zend_Controller_Action {
     
     public function listadoAction()
     { 
+         //carrego titles
+        $this->view->head = "Easyweb :: Listado Contenido";
+        
         $entradas = $this->_entradaDoctrineDao->obtenerTodos();
         $paginator = Zend_Paginator::factory($entradas);
         $paginator->setCurrentPageNumber($this->_getParam('page',0));

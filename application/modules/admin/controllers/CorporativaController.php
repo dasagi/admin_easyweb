@@ -107,6 +107,9 @@ class Admin_CorporativaController extends Zend_Controller_Action {
        
     public function indexAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Empresa";
+        
         //passo el javascript
         $this->view->headScript()->appendScript("
 
@@ -133,7 +136,8 @@ class Admin_CorporativaController extends Zend_Controller_Action {
     {
             
         
-        
+        //carrego titles
+        $this->view->head = "Easyweb :: Empresa";
         //passo el javascript
         $this->view->headScript()->appendScript("
 
@@ -218,6 +222,8 @@ class Admin_CorporativaController extends Zend_Controller_Action {
             
     public function editarAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Empresa";
                 //passo el javascript
                 $this->view->headScript()->appendScript("
 

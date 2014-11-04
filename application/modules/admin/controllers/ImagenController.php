@@ -203,6 +203,9 @@ class Admin_ImagenController extends Zend_Controller_Action {
    
     public function indexAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb :: Imágenes";
+        
         $paginator = Zend_Paginator::factory($this->_imagenDoctrineDao->obtenerTodos());
         $paginator->setCurrentPageNumber($this->_getParam('page',0));
         
@@ -385,6 +388,9 @@ class Admin_ImagenController extends Zend_Controller_Action {
     
     public function listadoAction()
     { 
+        //carrego titles
+        $this->view->head = "Easyweb :: Listado Imágenes";
+        
          //total número imatges
         $this->view->total = count($this->_imagenDoctrineDao->obtenerTodos());
         

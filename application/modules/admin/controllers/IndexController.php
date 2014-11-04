@@ -124,6 +124,8 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        //carrego titles
+        $this->view->head = "Easyweb Corp 2.0";
         
         //conto totes les portades
         $numeroPortades = count($this->_portadaDoctrineDao->obtenerTodos());
